@@ -1,0 +1,96 @@
+{
+  "name"    : "jseditor",
+
+  "include" :
+  [
+    {
+      "path" : "${QOOXDOO_PATH}/tool/data/config/application.json"
+    }
+  ],
+
+  "export" :
+  [
+    "api",
+    "api-data",
+    "build",
+    "clean",
+    "distclean",
+    "dependencies",
+    "fix",
+    "info",
+    "lint",
+    "migration",
+    "pretty",
+    "profiling",
+    "source",
+    "source-all",
+    "source-hybrid",
+    "source-server",
+    "source-server-reload",
+    "source-httpd-config",
+    "test",
+    "test-source",
+    "translation",
+    "validate-config",
+    "validate-manifest",
+    "watch"
+  ],
+
+  "default-job" : "source-hybrid",
+
+  "let" :
+  {
+    "APPLICATION"  : "jseditor",
+    "QOOXDOO_PATH" : "../../../qooxdoo",
+    "QXTHEME"      : "jseditor.theme.Theme",
+    "API_EXCLUDE"  : ["qx.test.*", "${APPLICATION}.theme.*", "${APPLICATION}.test.*"],
+    "LOCALES"      : [ "en" ],
+    "CACHE"        : "${TMPDIR}/qx${QOOXDOO_VERSION}/cache",
+    "ROOT"         : "."
+  },
+
+  // You only need to edit the remainder of this file, if you want to customize
+  // specific jobs, or add own job definitions.
+
+  "jobs" :
+  {
+  	"libraries" :
+    {
+      "library" :
+      [
+        {
+          "manifest" : "../qx.app/Manifest.json"
+        }
+      ]
+    },
+    
+    "build" :
+    {
+      "environment" :
+      {
+        "qx.debug" : true,
+        "appview.controlcreate": true,
+        "appview.controladd": true
+      }
+    },
+    
+  
+    "build-script" :
+    {
+    	//"extend" : ["api-data"],
+    	
+      "compile-options" :
+      {
+        "code" :
+        {
+          "format" : false
+        }
+      }
+      
+      /*"api" :
+      {
+        "path" : "${BUILD_PATH}/resource/api"
+      }*/
+    }    
+  }
+}
