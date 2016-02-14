@@ -60,12 +60,18 @@
       [
         {
           "manifest" : "../qx.app/Manifest.json"
+        },
+        
+        {
+          "manifest" : "../../../qooxdoo/component/apiviewer/Manifest.json"
         }
       ]
     },
     
     "build" :
     {
+      
+      
       "environment" :
       {
         "qx.debug" : true,
@@ -74,23 +80,21 @@
       }
     },
     
-  
     "build-script" :
     {
-    	//"extend" : ["api-data"],
-    	
-      "compile-options" :
+    	//"extend" : ["api-data"],      
+      "api" :
+      {
+        "path" : "${BUILD_PATH}/resource/api"
+      },
+    
+    	"compile-options" :
       {
         "code" :
         {
           "format" : false
         }
       }
-      
-      /*"api" :
-      {
-        "path" : "${BUILD_PATH}/resource/api"
-      }*/
     }    
   }
 }

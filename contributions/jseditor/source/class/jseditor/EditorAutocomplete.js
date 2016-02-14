@@ -17,8 +17,28 @@ qx.Class.define("jseditor.EditorAutocomplete",
 {
   extend: qx.core.Object,
   
+  construct : function()
+  {
+    try
+    {
+      this.base(arguments);
+      var loader = new apiviewer.ClassLoader("./resource/api");
+      this.debug("Class loader:", loader);
+      loader.load("qx.core.Object", true, function(a,b){console.log(a,b);});
+    }
+    catch(ex)
+    {
+      this.error("Ctor", ex);
+    }
+  },
+  
   members:
   {
+    getFromJson: function()
+    {
+    
+    },
+    
     /**
      * Get completion collection for entered term
      * 
